@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     const string IDLE = "Idle";
     const string WALK = "Walk";
     public Boolean ONui = false;
+    private int val = 0;
     public UIManager UI;
     CustomActions input;
     public TimeSkip Skipper;
@@ -86,8 +87,14 @@ public class PlayerController : MonoBehaviour
         {
             Skipper.gameObject.GetComponent<TimeSkip>().TimeSkiper();
             Shop.gameObject.GetComponent<ShopShower>().ShopShow();
-        }
 
+        }
+        if (val == 1)
+        {
+            ONui = true;
+        }
+        else ONui = false;
+        val = Shop.gameObject.GetComponent<ShopShower>().UIActive();
         //Runs the function that handles all the interaction
         Interact();
     }
@@ -122,6 +129,8 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
         }
     }
+
+    //Play Animations
     void SetAnimations()
     {
         if (agent.velocity == Vector3.zero)

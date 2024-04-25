@@ -14,7 +14,6 @@ public class ShopShower : MonoBehaviour
     // Update is called once per frame
     public void ShopShow()
     {
-        
             if(onColl == true)
             {
                 if (ShopUI.activeSelf)
@@ -37,6 +36,10 @@ public class ShopShower : MonoBehaviour
         if(isON == true)
         {
             val = 1;
+        }
+        if(isON == false)
+        {
+            val = 0;
         }
         return val;
     }
